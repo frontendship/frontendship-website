@@ -4,9 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-
-# testing
-/coverage
+.idea
 
 # next.js
 /.next/

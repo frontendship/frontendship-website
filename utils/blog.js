@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
+import readingTime from 'reading-time';
 import rehypeSlug from 'rehype-slug';
 import rehypePrettyCode from 'rehype-pretty-code';
 
@@ -17,11 +18,13 @@ const GetPostMeta = currentSlug => {
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
 
   const { data, content } = matter(fileContent);
+  const readTime = readingTime(content).text;
 
   return {
     meta: {
       ...data,
-      slug
+      slug,
+      readTime
     },
     content
   };

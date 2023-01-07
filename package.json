@@ -6,13 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix .",
+    "format": "npx prettier --write .",
+    "commit": "cz",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@next/font": "^13.0.5",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "commitizen": "^4.2.6",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
     "eslint-config-prettier": "^8.5.0",
@@ -33,7 +39,16 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "eslint-plugin-tailwindcss": "^3.8.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
     "postcss": "^8.4.19",
     "tailwindcss": "^3.2.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

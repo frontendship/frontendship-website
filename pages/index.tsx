@@ -7,7 +7,6 @@ export default function Home() {
 export async function getStaticProps() {
   const posts = GetAllPostsMeta();
 
-  console.log(posts);
   return {
     props: {
       posts

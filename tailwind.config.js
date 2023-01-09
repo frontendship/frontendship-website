@@ -11,16 +11,6 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-inter)', ...fontFamily.sans]
-      },
-      colors: {
-        primary: {
-          50: '#F9F5FF',
-          100: '#F4EBFF',
-          200: '#E9D7FE',
-          500: '#9E77ED',
-          600: '#7F56D9',
-          700: '#6941C6'
-        }
       }
     }
   },

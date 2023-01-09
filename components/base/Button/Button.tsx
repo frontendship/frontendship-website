@@ -9,15 +9,15 @@ const buttonSizes: Record<TButtonSize, string> = {
   '2xl': 'text-lg px-7 py-4'
 };
 
-const buttonBase = 'font-semibold rounded-lg shadow-sm shadow-primary-100/5';
+const buttonBase = 'font-semibold rounded-lg shadow-sm shadow-violet-100/5';
 
 const buttonStyles: Record<TButtonVariation, string> = {
-  default: `${buttonBase} text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 ring-primary-100 border border-primary-600`,
+  default: `${buttonBase} text-white bg-violet-600 hover:bg-violet-700 focus:ring-4 ring-violet-100 border border-violet-600`,
   outlined: `${buttonBase} text-black hover:border-gray-400 bg-white focus:ring-4 ring-gray-100 border border-gray-300`
 };
 
 const disabledButtonStyles: Record<TButtonVariation, string> = {
-  default: `${buttonBase} text-white bg-primary-200 hover:bg-primary-200 cursor-not-allowed border border-primary-200`,
+  default: `${buttonBase} text-white bg-violet-200 hover:bg-violet-200 cursor-not-allowed border border-violet-200`,
   outlined: `${buttonBase} text-black bg-gray-200 hover:bg-gray-200 border border-gray-300 cursor-not-allowed`
 };
 

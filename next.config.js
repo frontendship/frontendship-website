@@ -2,7 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  images: { domains: ['prototyprio.gumlet.io'] }
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'prototyprio.gumlet.io',
+        port: '',
+        pathname: '/*/**'
+      }
+    ]
+  }
 };
 
 module.exports = nextConfig;

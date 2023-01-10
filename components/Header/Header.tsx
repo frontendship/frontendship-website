@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Menu, X } from 'react-feather';
 
 type MenuItem = {
@@ -72,9 +72,9 @@ export default function Header({
     }
   }, []);
   return (
-    <div className="md:h-auto h-screen flex md:p-4 p-0  gap-6 items-center flex-col md:flex-row">
-      <div className="flex border-b md:border-0 md:p-0 p-4  items-center justify-between md:w-fit w-full">
-        <div className="flex md:w-max items-center gap-x-3">
+    <div className="flex h-screen flex-col items-center gap-6  p-0 md:h-auto md:flex-row md:p-4">
+      <div className="flex w-full items-center justify-between border-b  p-4 md:w-fit md:border-0 md:p-0">
+        <div className="flex items-center gap-x-3 md:w-max">
           <Image alt="" src={imageUrl} width="45" height="45" />
           <h2>{title}</h2>
         </div>
@@ -89,17 +89,17 @@ export default function Header({
 
       {isOpen ? (
         <>
-          <div className="flex  md:p-0 md:w-max p-4  grow w-full items-start md:items-center justify-start">
-            <div className="flex w-full flex-col md:flex-row md:items-center items-start md:gap-x-6 md:gap-y-0 gap-6">
+          <div className="flex  w-full grow items-start  justify-start p-4 md:w-max md:items-center md:p-0">
+            <div className="flex w-full flex-col items-start gap-6 md:flex-row md:items-center md:gap-x-6 md:gap-y-0">
               {topMenuItems.map((topMenuItem, index) => (
-                <div key={index} className="md:w-auto w-full">
+                <div key={index} className="w-full md:w-auto">
                   {topMenuItem.text}
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="md:hidden  md:p-0 p-4  border-t  flex w-full flex-row flex-wrap gap-3">
+          <div className="flex  w-full flex-row  flex-wrap  gap-3 border-t p-4 md:hidden md:p-0">
             {menuItems.map((menuItem, index) => (
               <div key={index} className="w-48">
                 {menuItem.text}
@@ -107,11 +107,11 @@ export default function Header({
             ))}
           </div>
 
-          <div className="flex md:p-0 p-4  md:justify-end gap-4 justify-center  md:w-max w-full">
-            <button className="px-2 w-full md:w-max py-1 rounded hover:bg-slate-100 opacity-70 ease-in-out duration-300">
+          <div className="flex w-full justify-center  gap-4 p-4 md:w-max  md:justify-end md:p-0">
+            <button className="w-full rounded px-2 py-1 opacity-70 duration-300 ease-in-out hover:bg-slate-100 md:w-max">
               Log in
             </button>
-            <button className="bg-indigo-500 md:w-max w-full hover:bg-indigo-600 text-white px-2 py-1 rounded ease-in-out duration-300">
+            <button className="w-full rounded bg-indigo-500 px-2 py-1 text-white duration-300 ease-in-out hover:bg-indigo-600 md:w-max">
               Sign up
             </button>
           </div>

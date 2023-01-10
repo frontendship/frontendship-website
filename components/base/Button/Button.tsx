@@ -1,5 +1,4 @@
-type TButtonSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-type TButtonVariation = 'default' | 'outlined';
+import { type TButtonSize, TButtonVariation } from './types';
 
 const buttonSizes: Record<TButtonSize, string> = {
   sm: 'text-sm px-[14px] py-2',
@@ -29,13 +28,14 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({ className, ...props }: Props) => {
   const size = buttonSizes[props.size ?? 'md'];
+  const variation = props.variation ?? 'default';
   let style = props.disabled
-    ? disabledButtonStyles[props.variation ?? 'default']
-    : buttonStyles[props.variation ?? 'default'];
+    ? disabledButtonStyles[variation]
+    : buttonStyles[variation];
 
-  return (
-    <button {...props} className={[size, style, className].join(' ').trim()} />
-  );
+  const classes = [size, style, className].join(' ').trim();
+
+  return <button {...props} className={classes} />;
 };
 
 export default Button;

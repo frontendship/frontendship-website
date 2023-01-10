@@ -1,7 +1,12 @@
+import Header from '../components/Header/Header';
 import { GetAllPostsMeta } from '../utils/blog';
 
 export default function Home() {
-  return <h1>Hello World!</h1>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 }
 
 export async function getStaticProps() {

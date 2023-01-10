@@ -11,6 +11,9 @@ const nextConfig = {
         pathname: '/*/**'
       }
     ]
+  },
+  env: {
+    DISCORD_SERVER_URL: 'https://discord.gg/frontendship'
   }
 };
 

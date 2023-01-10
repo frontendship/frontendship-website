@@ -2,10 +2,8 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { Menu, X } from 'react-feather';
 
-type MenuItem = {
-  text: string;
-  path?: string;
-};
+import { HeaderParams, MenuItem, TopMenuItem } from './Header.types';
+
 const defaultMenuItems: MenuItem[] = [
   {
     text: 'About us'
@@ -33,17 +31,6 @@ const defaultMenuItems: MenuItem[] = [
   }
 ];
 
-type TopMenuItem = {
-  text: string;
-  path?: string;
-};
-type HeaderParams = {
-  imageUrl?: string;
-  title?: string;
-  topMenuItems?: TopMenuItem[];
-  menuItems?: MenuItem[];
-};
-
 const defaultTopMenuItems: TopMenuItem[] = [
   {
     text: 'Home'
@@ -65,9 +52,14 @@ export default function Header({
   menuItems = defaultMenuItems
 }: HeaderParams) {
   const [isOpen, setIsOpen] = useState(true);
+  const openDiscordServer = () => {
+    window.open(process.env.DISCORD_SERVER_URL);
+  };
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+    const isClientInMobileView =
+      typeof window !== 'undefined' && window.innerWidth < 768;
+    if (isClientInMobileView) {
       setIsOpen(false);
     }
   }, []);
@@ -79,15 +71,13 @@ export default function Header({
           <h2>{title}</h2>
         </div>
         <div className="flex md:hidden">
-          {isOpen ? (
-            <X onClick={() => setIsOpen(false)} />
-          ) : (
-            <Menu onClick={() => setIsOpen(true)} />
-          )}
+          <button onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X /> : <Menu />}
+          </button>
         </div>
       </div>
 
-      {isOpen ? (
+      {isOpen && (
         <>
           <div className="flex  w-full grow items-start  justify-start p-4 md:w-max md:items-center md:p-0">
             <div className="flex w-full flex-col items-start gap-6 md:flex-row md:items-center md:gap-x-6 md:gap-y-0">
@@ -108,16 +98,14 @@ export default function Header({
           </div>
 
           <div className="flex w-full justify-center  gap-4 p-4 md:w-max  md:justify-end md:p-0">
-            <button className="w-full rounded px-2 py-1 opacity-70 duration-300 ease-in-out hover:bg-slate-100 md:w-max">
-              Log in
-            </button>
-            <button className="w-full rounded bg-indigo-500 px-2 py-1 text-white duration-300 ease-in-out hover:bg-indigo-600 md:w-max">
-              Sign up
+            <button
+              className="w-full rounded bg-indigo-500 px-2 py-1 text-white duration-300 ease-in-out hover:bg-indigo-600 md:w-max"
+              onClick={() => openDiscordServer()}
+            >
+              Join Discord
             </button>
           </div>
         </>
-      ) : (
-        <></>
       )}
     </div>
   );

@@ -1,8 +1,26 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"],
-  "plugins": ["prettier"],
+  "extends": [
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:tailwindcss/recommended"
+  ],
+  "plugins": ["prettier", "tailwindcss", "simple-import-sort"],
   "rules": {
+    "quotes": ["error", "single"],
     "prettier/prettier": "warn",
-    "no-console": "warn"
+    "no-console": "warn",
+    "simple-import-sort/imports": "error",
+    "no-duplicate-imports": "error",
+    "no-unused-vars": ["error", { "args": "all" }],
+    "no-duplicate-case": "error",
+    "no-empty": "error",
+    "no-use-before-define": "error",
+    "tailwindcss/classnames-order": "warn",
+    "tailwindcss/enforces-negative-arbitrary-values": "warn",
+    "tailwindcss/enforces-shorthand": "warn",
+    "tailwindcss/migration-from-tailwind-2": "warn",
+    "tailwindcss/no-arbitrary-value": "off",
+    "tailwindcss/no-custom-classname": "warn",
+    "tailwindcss/no-contradicting-classname": "error"
   }
 }

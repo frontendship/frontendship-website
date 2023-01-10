@@ -2,49 +2,9 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { Menu, X } from 'react-feather';
 
-import { HeaderParams, MenuItem, TopMenuItem } from './Header.types';
+import { defaultMenuItems, defaultTopMenuItems } from './Header.items';
+import { HeaderParams } from './Header.types';
 
-const defaultMenuItems: MenuItem[] = [
-  {
-    text: 'About us'
-  },
-  {
-    text: 'Press'
-  },
-  {
-    text: 'Careers'
-  },
-  {
-    text: 'Legal'
-  },
-  {
-    text: 'Support'
-  },
-  {
-    text: 'Contact'
-  },
-  {
-    text: 'Sitemap'
-  },
-  {
-    text: 'Cookie settings'
-  }
-];
-
-const defaultTopMenuItems: TopMenuItem[] = [
-  {
-    text: 'Home'
-  },
-  {
-    text: 'Products'
-  },
-  {
-    text: 'Resource'
-  },
-  {
-    text: 'Pricing'
-  }
-];
 export default function Header({
   imageUrl = 'https://prototyprio.gumlet.io/strapi/20b5e1615519f85953d636ec6a5005ae.png?w=3840&q=75&format=webp&compress=true&dpr=2',
   title = 'Untitled UI',

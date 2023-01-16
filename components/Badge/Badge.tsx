@@ -18,39 +18,39 @@ const badgeStyles = cva(
         primary: [
           'bg-violet-50',
           'text-violet-700',
-          '[&>h4]:text-violet-50',
-          '[&>h4]:bg-violet-700'
+          '[&>.badge-title]:text-violet-50',
+          '[&>.badge-title]:bg-violet-700'
         ],
-        light: ['bg-violet-50', 'text-violet-700', '[&>h4]:bg-white'],
+        light: ['bg-violet-50', 'text-violet-700', '[&>.badge-title]:bg-white'],
         green: [
           'bg-green-50',
           'text-green-700',
-          '[&>h4]:bg-green-700',
-          '[&>h4]:text-white'
+          '[&>.badge-title]:bg-green-700',
+          '[&>.badge-title]:text-white'
         ],
         blue: [
           'bg-blue-50',
           'text-blue-700',
-          '[&>h4]:bg-blue-700',
-          '[&>h4]:text-white'
+          '[&>.badge-title]:bg-blue-700',
+          '[&>.badge-title]:text-white'
         ],
         red: [
           'bg-red-50',
           'text-red-700',
-          '[&>h4]:bg-red-700',
-          '[&>h4]:text-white'
+          '[&>.badge-title]:bg-red-700',
+          '[&>.badge-title]:text-white'
         ],
         orange: [
           'bg-orange-50',
           'text-orange-700',
-          '[&>h4]:bg-orange-700',
-          '[&>h4]:text-white'
+          '[&>.badge-title]:bg-orange-700',
+          '[&>.badge-title]:text-white'
         ],
         gray: [
           'bg-gray-50',
           'text-gray-700',
-          '[&>h4]:bg-gray-700',
-          '[&>h4]:text-white'
+          '[&>.badge-title]:bg-gray-700',
+          '[&>.badge-title]:text-white'
         ]
       },
       size: {
@@ -102,7 +102,7 @@ const Badge = ({ children, className, size, variant }: Props) => {
 };
 
 const BadgeTitle = ({ children }: { children: string }) => {
-  return <h4 className="shrink-0 rounded-2xl">{children}</h4>;
+  return <span className="badge-title shrink-0 rounded-2xl">{children}</span>;
 };
 
 const BadgeContent = ({ children }: { children: string }) => {

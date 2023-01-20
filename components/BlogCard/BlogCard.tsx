@@ -7,9 +7,6 @@ interface Props {
   children: React.ReactNode;
 }
 
-// TODO: Add Card Labels
-// INFO: Sizes will be adjusted by the parent component
-
 /**
  * @example
  *    <BlogCard>
@@ -28,11 +25,11 @@ const Description = ({ children }: Props) => {
   return <p className="text-gray-500">{children}</p>;
 };
 
-const Img = ({ attr }: { attr: ImageProps }) => {
+const Img = ({ attr }: { attr: ImageProps; }) => {
   return <Image {...attr} />;
 };
 
-const Info = ({ by, date }: { by: string; date: string }) => {
+const Info = ({ by, date }: { by: string; date: string; }) => {
   return (
     <div className="text-sm font-semibold text-indigo-700">
       <span>{by}</span>
@@ -50,12 +47,10 @@ const Title = ({
   link: LinkProps;
 }) => {
   return (
-    <div className="flex items-center justify-between">
+    <Link {...link} className='flex items-center justify-between'>
       <h3 className="text-2xl font-semibold text-gray-900">{children}</h3>
-      <Link {...link}>
-        <ArrowUpRight />
-      </Link>
-    </div>
+      <ArrowUpRight />
+    </Link>
   );
 };
 

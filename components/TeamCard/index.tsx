@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { ReactNode } from 'react';
 import { GitHub, Linkedin, Twitter } from 'react-feather';
 
@@ -8,11 +9,15 @@ const TeamCard = ({ children }: { children: ReactNode }) => {
 
 const TeamCardImage = ({ src, alt }: { src: string; alt: string }) => {
   return (
-    <Image
-      className="h-[280px] w-full object-cover xl:h-[296px]"
-      src={src}
-      alt={alt}
-    />
+    <div className="relative h-[280px] w-full xl:h-[296px]">
+      <Image
+        loader={() => src}
+        src={src}
+        alt={alt}
+        fill
+        className="object-cover"
+      />
+    </div>
   );
 };
 
@@ -40,24 +45,24 @@ const TeamCardDescription = ({ children }: { children: ReactNode }) => {
 
 interface ISocialLinks {
   socialLinks: {
-    twitter?: string;
-    linkedin?: string;
-    github?: string;
+    twitter: string;
+    linkedin: string;
+    github: string;
   };
 }
 
 const TeamCardSocial = ({ socialLinks }: ISocialLinks) => {
   return (
     <div className="mt-6 flex gap-5">
-      <a href={socialLinks.twitter} target={'_blank'} rel="noreferrer">
-        <Twitter color="gray" />
-      </a>
-      <a href={socialLinks.linkedin} target={'_blank'} rel="noreferrer">
-        <Linkedin color="gray" />
-      </a>
-      <a href={socialLinks.github} target={'_blank'} rel="noreferrer">
-        <GitHub color="gray" />
-      </a>
+      <Link href={socialLinks.twitter} target={'_blank'}>
+        <Twitter size={24} color="#98A2B3" />
+      </Link>
+      <Link href={socialLinks.linkedin} target={'_blank'}>
+        <Linkedin size={24} color="#98A2B3" />
+      </Link>
+      <Link href={socialLinks.github} target={'_blank'}>
+        <GitHub size={24} color="#98A2B3" />
+      </Link>
     </div>
   );
 };

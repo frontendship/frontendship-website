@@ -9,6 +9,12 @@ const nextConfig = {
         hostname: 'prototyprio.gumlet.io',
         port: '',
         pathname: '/*/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.hizliresim.com',
+        port: '',
+        pathname: '/*'
       }
     ]
   },

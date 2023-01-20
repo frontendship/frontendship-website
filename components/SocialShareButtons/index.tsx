@@ -1,38 +1,38 @@
-import Image from 'next/image';
+import { ReactNode } from 'react';
+import { Facebook, Link, Linkedin, Twitter } from 'react-feather';
 import {
   FacebookShareButton,
   LinkedinShareButton,
   TwitterShareButton
 } from 'react-share';
 
-const SocialIcon = ({ src, alt }: { src: string; alt: string }) => (
+const SocialIcon = ({ children }: { children: ReactNode }) => (
   <div className="rounded-lg border border-gray-300 p-3 shadow-sm shadow-blue-900/5 hover:border-gray-400">
-    <Image className="saturate-0" width={20} height={20} src={src} alt={alt} />
+    {children}
   </div>
 );
 
 const SocialShareButtons = ({ title, url }: { title: string; url: string }) => (
   <div className="flex gap-3">
     <button onClick={() => navigator.clipboard.writeText(url)}>
-      <SocialIcon
-        src="/illustrations/link.svg"
-        alt="copy-to-clipboard-button"
-      />
+      <SocialIcon>
+        <Link height={20} width={20} />
+      </SocialIcon>
     </button>
     <TwitterShareButton url={url} title={title}>
-      <SocialIcon src="/illustrations/twitter.svg" alt="twitter-share-button" />
+      <SocialIcon>
+        <Twitter height={20} width={20} />
+      </SocialIcon>
     </TwitterShareButton>
     <FacebookShareButton url={url}>
-      <SocialIcon
-        src="/illustrations/facebook.svg"
-        alt="facebook-share-button"
-      />
+      <SocialIcon>
+        <Facebook height={20} width={20} />
+      </SocialIcon>
     </FacebookShareButton>
     <LinkedinShareButton url={url} title={title}>
-      <SocialIcon
-        src="/illustrations/linkedin.svg"
-        alt="twitter-share-button"
-      />
+      <SocialIcon>
+        <Linkedin height={20} width={20} />
+      </SocialIcon>
     </LinkedinShareButton>
   </div>
 );

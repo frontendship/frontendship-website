@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type Pagination = {
   current: number;
   limit?: number;
@@ -12,7 +14,9 @@ export type PaginationProps = Pagination & {
 };
 
 export type PaginationButtonProps = {
+  content: React.ReactNode;
   show: boolean;
+  position: 'left' | 'right';
   onPageClick: () => void;
 };
 
@@ -27,4 +31,10 @@ export type PaginationNumberButtonProps = {
   page: number | string;
   active: boolean;
   onPageClick?: () => void;
+};
+
+export type PaginationGroupItem = {
+  content: number | string;
+  show: boolean;
+  page: number;
 };

@@ -1,3 +1,5 @@
+import { PaginationGroupItem } from '@/components/Pagination/Pagination.types';
+
 type CalculatePaginationParams = {
   current: number;
   minPage: number;
@@ -35,4 +37,58 @@ export const calculatePagination = (
     pages.push(params.current);
   }
   return pages;
+};
+
+type MapPagesToPaginationGroupItemsParams = {
+  pages: number[];
+  centerIndex: number;
+  totalCount: number;
+  maxPage: number;
+};
+
+export const mapPagesToPaginationGroupItems = ({
+  pages,
+  centerIndex,
+  totalCount,
+  maxPage
+}: MapPagesToPaginationGroupItemsParams) => {
+  const items: PaginationGroupItem[] = [];
+  if (centerIndex > 1) {
+    items.push(
+      {
+        content: '1',
+        page: 1,
+        show: false
+      },
+      {
+        content: '...',
+        page: pages[centerIndex - 2],
+        show: true
+      }
+    );
+  }
+  pages.map((page, index) => {
+    if (index >= centerIndex - 1 && index <= centerIndex + 1) {
+      items.push({
+        page,
+        content: page,
+        show: true
+      });
+    }
+  });
+  if (centerIndex < totalCount - 2) {
+    items.push(
+      {
+        content: '...',
+        page: pages[centerIndex + 2],
+        show: true
+      },
+      {
+        content: maxPage,
+        page: maxPage,
+        show: false
+      }
+    );
+  }
+  return items;
 };

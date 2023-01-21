@@ -7,16 +7,6 @@ interface Props {
   children: React.ReactNode;
 }
 
-/**
- * @example
- *    <BlogCard>
-         <BlogCard.Image src="https://picsum.photos/200/300" alt="Image" /> 
-         <BlogCard.Info by='Ahmet Yilmaz' date='12.57.78' />
-         <BlogCard.Title link={{ href: '/' }}>Card Title</BlogCard.Title>
-         <BlogCard.Description>Card desc</BlogCard.Description>
-      </BlogCard>;
- *  */
-
 const BlogCard = ({ children }: Props) => {
   return <article className="flex flex-col gap-3">{children}</article>;
 };

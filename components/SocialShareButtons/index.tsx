@@ -12,28 +12,56 @@ const SocialIcon = ({ children }: { children: ReactNode }) => (
   </div>
 );
 
+export const CopyToClipboardButton = ({ url }: { url: string }) => (
+  <button onClick={() => navigator.clipboard.writeText(url)}>
+    <SocialIcon>
+      <Link height={20} width={20} />
+    </SocialIcon>
+  </button>
+);
+
+export const ShareOnTwitterButton = ({
+  url,
+  title
+}: {
+  url: string;
+  title: string;
+}) => (
+  <TwitterShareButton url={url} title={title}>
+    <SocialIcon>
+      <Twitter height={20} width={20} />
+    </SocialIcon>
+  </TwitterShareButton>
+);
+
+export const ShareOnFacebookButton = ({ url }: { url: string }) => (
+  <FacebookShareButton url={url}>
+    <SocialIcon>
+      <Facebook height={20} width={20} />
+    </SocialIcon>
+  </FacebookShareButton>
+);
+
+export const ShareOnLinkedInButton = ({
+  url,
+  title
+}: {
+  url: string;
+  title: string;
+}) => (
+  <LinkedinShareButton url={url} title={title}>
+    <SocialIcon>
+      <Linkedin height={20} width={20} />
+    </SocialIcon>
+  </LinkedinShareButton>
+);
+
 const SocialShareButtons = ({ title, url }: { title: string; url: string }) => (
   <div className="flex gap-3">
-    <button onClick={() => navigator.clipboard.writeText(url)}>
-      <SocialIcon>
-        <Link height={20} width={20} />
-      </SocialIcon>
-    </button>
-    <TwitterShareButton url={url} title={title}>
-      <SocialIcon>
-        <Twitter height={20} width={20} />
-      </SocialIcon>
-    </TwitterShareButton>
-    <FacebookShareButton url={url}>
-      <SocialIcon>
-        <Facebook height={20} width={20} />
-      </SocialIcon>
-    </FacebookShareButton>
-    <LinkedinShareButton url={url} title={title}>
-      <SocialIcon>
-        <Linkedin height={20} width={20} />
-      </SocialIcon>
-    </LinkedinShareButton>
+    <CopyToClipboardButton url={url} />
+    <ShareOnTwitterButton url={url} title={title} />
+    <ShareOnFacebookButton url={url} />
+    <ShareOnLinkedInButton url={url} title={title} />
   </div>
 );
 

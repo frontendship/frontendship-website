@@ -116,16 +116,16 @@ export const topMenuItems: TopMenuItem[] = [
     text: 'Home'
   },
   {
+    text: 'Resource'
+  },
+  {
+    text: 'Pricing'
+  },
+  {
     text: 'Products',
     dropdown: {
       key: 'products',
       subMenu: productSubMenuColumns
     }
-  },
-  {
-    text: 'Resource'
-  },
-  {
-    text: 'Pricing'
   }
 ];

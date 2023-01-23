@@ -22,7 +22,8 @@ export type TopMenuItem = {
   path?: string;
   dropdown?: DropdownItem;
 };
-export type HeaderProps = {
+export type HeaderInnerProps = {
+  isMobile: boolean;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   openDiscordServer: () => void;

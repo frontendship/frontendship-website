@@ -4,11 +4,10 @@ import { MinusCircle, PlusCircle } from 'react-feather';
 import {
   AccordionDetailsProps,
   AccordionHeaderProps,
-  AccordionItemProps,
   AccordionProps
 } from './Accordion.types';
 
-const AccordionItem: React.FC<AccordionItemProps> = ({ children }) => {
+export const Accordion = ({ children }: AccordionProps) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const onToggle = () => {
@@ -16,12 +15,9 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ children }) => {
   };
 
   return (
-    <div className={'border-b py-3 md:pb-7'}>
-      <div
-        onClick={() => onToggle()}
-        className="flex cursor-pointer items-center justify-between"
-      >
-        {children[0]}
+    <div className="border-b pt-6 pb-8">
+      <div className="flex items-center justify-between">
+        <button onClick={() => onToggle()}>{children[0]}</button>
         <div className="text-indigo-500">
           {isExpanded ? <MinusCircle /> : <PlusCircle />}
         </div>
@@ -33,9 +29,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ children }) => {
 
 const AccordionHeader: React.FC<AccordionHeaderProps> = ({ children }) => {
   return (
-    <div className="grow py-4 text-lg font-medium text-gray-900">
-      {children}
-    </div>
+    <div className="grow text-lg font-medium text-gray-900">{children}</div>
   );
 };
 
@@ -45,12 +39,5 @@ const AccordionDetails: React.FC<AccordionDetailsProps> = ({ children }) => {
   );
 };
 
-const AccordionRoot: React.FC<AccordionProps> = ({ children }) => {
-  return <div className="w-full">{children}</div>;
-};
-
-export const Accordion = Object.assign(AccordionRoot, {
-  Item: AccordionItem,
-  Details: AccordionDetails,
-  Header: AccordionHeader
-});
+Accordion.Details = AccordionDetails;
+Accordion.Header = AccordionHeader;

@@ -29,7 +29,7 @@ const QuoteSlider = () => {
 };
 
 const SliderNavigations = () => (
-  <div className="flex justify-between w-full text-gray-900 mt-11 md:hidden">
+  <div className="mt-11 flex w-full justify-between text-gray-900 md:hidden">
     <button className="quote-prev-btn">
       <ArrowLeft />
     </button>

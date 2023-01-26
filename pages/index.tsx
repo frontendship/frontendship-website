@@ -1,7 +1,19 @@
+import FaqSection from '@/components/FaqSection/FaqSection';
+
 import { GetAllPostsMeta } from '../utils/blog';
 
 export default function Home() {
-  return <h1>Hello World!</h1>;
+  return (
+    <div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <FaqSection />
+    </div>
+  );
 }
 
 export async function getStaticProps() {

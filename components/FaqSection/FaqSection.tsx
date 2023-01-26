@@ -14,14 +14,14 @@ const FaqSection: React.FC = () => {
           Everything you need to know about the product and billing.
         </p>
       </div>
-      <Accordion>
+      <div className="w-full">
         {faqAccordionItems.map((item, index) => (
-          <Accordion.Item key={index}>
+          <Accordion key={index}>
             <Accordion.Header>{item.title}</Accordion.Header>
             <Accordion.Details>{item.content}</Accordion.Details>
-          </Accordion.Item>
+          </Accordion>
         ))}
-      </Accordion>
+      </div>
     </section>
   );
 };

@@ -6,7 +6,7 @@ import readingTime from 'reading-time';
 import rehypeSlug from 'rehype-slug';
 import rehypePrettyCode from 'rehype-pretty-code';
 
-const RootDirectory = path.join(process.cwd(), 'content', 'blog');
+const RootDirectory = path.join(process.cwd(), 'src', 'content', 'blog');
 
 const GetAllPosts = () => {
   return fs.readdirSync(RootDirectory);

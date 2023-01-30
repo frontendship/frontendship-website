@@ -17,7 +17,7 @@ export const FooterSectionItems: FooterSectionItems[] = [
   },
   {
     header: 'Company',
-    content: ['About us', 'Careers', 'Press', 'News', 'Media kit', 'Contact']
+    content: ['About-us', 'Careers', 'Press', 'News', 'Media-kit', 'Contact']
   },
   {
     header: 'Legal',
@@ -25,7 +25,7 @@ export const FooterSectionItems: FooterSectionItems[] = [
       'Blog',
       'Newsletter',
       'Events',
-      'Help Centre',
+      'Help-Centre',
       'Tutorials',
       'Support'
     ]

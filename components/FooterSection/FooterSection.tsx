@@ -29,16 +29,16 @@ const FooterSection: React.FC = () => {
         </div>
         <div className="pt-12 md:pt-16">
           <div className="mb-12 grid grid-cols-2 grid-rows-1 gap-8 md:grid-cols-3 md:gap-48">
-            {FooterSectionItems.map((x, index) => (
+            {FooterSectionItems.map((items, index) => (
               <div key={index}>
-                <span className="text-sm text-gray-400">{x.header}</span>
+                <span className="text-sm text-gray-400">{items.header}</span>
                 <ul>
-                  {x.content.map((y, index) => (
+                  {items.content.map((item, index) => (
                     <li
                       className="mt-3 text-base font-semibold text-gray-500 first:mt-4 "
                       key={index}
                     >
-                      <Link href="/">{y}</Link>
+                      <Link href={'/' + item}>{item}</Link>
                     </li>
                   ))}
                 </ul>
@@ -52,7 +52,7 @@ const FooterSection: React.FC = () => {
           <div className="flex gap-x-6 ">
             <button>
               <span>
-                <Image src={twitterIcon} alt="twitterIcon" />
+                <twitterIcon />
               </span>
             </button>
             <button>

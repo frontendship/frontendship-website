@@ -1,10 +1,17 @@
-import Header from '../components/Header/Header';
+import FaqSection from '@/components/FaqSection/FaqSection';
+
 import { GetAllPostsMeta } from '../utils/blog';
 
 export default function Home() {
   return (
     <div>
-      <Header />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <FaqSection />
     </div>
   );
 }

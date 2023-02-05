@@ -7,3 +7,9 @@ export interface Quote {
     avatar: string;
   };
 }
+
+export interface Metric {
+  id: number;
+  label: string;
+  value: string;
+}

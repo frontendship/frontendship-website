@@ -119,7 +119,7 @@ export const FooterRoutes: FooterLink[] = [
 export const HeaderLinks: Link[] = [
   {
     id: 1,
-    name: 'FRONTENDSHIP LOGO',
+    name: 'FRONTENDSHIP',
     accessibleName: 'Anasayfa',
     href: '#'
   },

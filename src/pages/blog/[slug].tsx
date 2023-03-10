@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote';
 
 import {
@@ -6,27 +7,25 @@ import {
   LinkIcon,
   TwitterIcon
 } from '@/assets/icons';
-import { AuthorCard } from '@/components';
-import { Badge } from '@/components/badge';
-import { Hero } from '@/components/hero';
-import ShareButton from '@/components/ShareButton/ShareButton';
+import { AuthorCard, Badge, Container, Hero, IconButton } from '@/components';
 import { GetAllSlugs, GetNoteBySlug } from '@/utils/blog';
-import Link from 'next/link';
 
 export default function BlogDetail({
   source,
-  meta: { title, category, readTime, date, avatar, author }
+  meta: { title, category, readTime, date, avatar, author, content }
 }: any) {
   return (
     <div>
-      <Hero>
-        <Hero.Label>{date}</Hero.Label>
-        <Hero.Title>{title}</Hero.Title>
-        <Badge variant="blue">
-          <Badge.Title>{readTime}</Badge.Title>
-          <Badge.Content>{category}</Badge.Content>
-        </Badge>
-      </Hero>
+      <Container>
+        <Hero>
+          <Hero.Label>{date}</Hero.Label>
+          <Hero.Title>{title}</Hero.Title>
+          <Badge variant="blue">
+            <Badge.Title>{readTime}</Badge.Title>
+            <Badge.Content>{category}</Badge.Content>
+          </Badge>
+        </Hero>
+      </Container>
 
       <section className="grid lg:grid-cols-7 gap-x-16 max-w-7xl md:px-8 px-4 pb-12 mx-auto">
         <div className="lg:col-span-2 lg:pl-11 lg:order-1 order-2">
@@ -36,20 +35,19 @@ export default function BlogDetail({
                 Table of contents
               </h4>
               <ul className="mt-4 space-y-3">
-                <li className="text-base text-zinc-500 font-semibold">
-                  <Link href="/">Introduction</Link>
-                </li>
-                <li className="text-base text-zinc-500 font-semibold">
-                  <Link href="/">Software and tools</Link>
-                </li>
-                <li className="text-base text-zinc-500 font-semibold">
-                  <Link href="/">Other resources</Link>
-                </li>
-                <li className="text-base text-zinc-500 font-semibold">
-                  <Link href="/">Conclusion</Link>
-                </li>
+                {content.map(
+                  ({ slug, name }: { slug: string; name: string }) => (
+                    <li
+                      key={slug}
+                      className="text-base font-semibold text-zinc-500"
+                    >
+                      <Link href={slug}>{name}</Link>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
+
             <div className="border-b border-b-zinc-200 pb-9">
               <h4 className="font-semibold text-base text-blue-600 mb-6">
                 Contributors
@@ -68,19 +66,19 @@ export default function BlogDetail({
               </AuthorCard>
             </div>
 
-            <div className="flex flex-row gap-4 sticky top-12">
-              <ShareButton onClick={() => {}}>
+            <div className="flex flex-row gap-4">
+              <IconButton variant="bordered" padding="lg" aria-label="link">
                 <LinkIcon />
-              </ShareButton>
-              <ShareButton onClick={() => {}}>
+              </IconButton>
+              <IconButton variant="bordered" padding="lg">
                 <GithubLinkIcon />
-              </ShareButton>
-              <ShareButton onClick={() => {}}>
+              </IconButton>
+              <IconButton variant="bordered" padding="lg">
                 <TwitterIcon />
-              </ShareButton>
-              <ShareButton onClick={() => {}}>
+              </IconButton>
+              <IconButton variant="bordered" padding="lg">
                 <LinkedinIcon />
-              </ShareButton>
+              </IconButton>
             </div>
           </div>
         </div>

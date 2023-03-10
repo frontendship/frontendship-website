@@ -32,11 +32,14 @@ interface Props
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     IconButtonBaseProps {}
 
-const IconButton = ({ className, variant, padding, ...props }: Props) => (
+export const IconButton = ({
+  className,
+  variant,
+  padding,
+  ...props
+}: Props) => (
   <button
     {...props}
     className={iconButtonStyles({ className, variant, padding })}
   />
 );
-
-export default IconButton;

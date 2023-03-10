@@ -1,10 +1,10 @@
 import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
+import path from 'path';
 import readingTime from 'reading-time';
-import rehypeSlug from 'rehype-slug';
 import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeSlug from 'rehype-slug';
 
 const RootDirectory = path.join(process.cwd(), 'src', 'content', 'blog');
 
@@ -30,6 +30,21 @@ const GetPostMeta = currentSlug => {
   };
 };
 
+const prettyCodeOptions = {
+  theme: 'github-light',
+  onVisitLine(node) {
+    if (node.children.length === 0) {
+      node.children = [{ type: 'text', value: ' ' }];
+    }
+  },
+  onVisitHighlightedLine(node) {
+    node.properties.className.push('highlighted');
+  },
+  onVisitHighlightedWord(node) {
+    node.properties.className = ['highlighted', 'word'];
+  }
+};
+
 export const GetNoteBySlug = async slug => {
   const meta = GetPostMeta(slug);
   const { content } = meta;
@@ -44,21 +59,6 @@ export const GetNoteBySlug = async slug => {
     ...meta,
     source: mdxSource
   };
-};
-
-const prettyCodeOptions = {
-  theme: 'github-light',
-  onVisitLine(node) {
-    if (node.children.length === 0) {
-      node.children = [{ type: 'text', value: ' ' }];
-    }
-  },
-  onVisitHighlightedLine(node) {
-    node.properties.className.push('highlighted');
-  },
-  onVisitHighlightedWord(node) {
-    node.properties.className = ['highlighted', 'word'];
-  }
 };
 
 export const GetAllPostsMeta = () => {

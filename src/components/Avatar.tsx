@@ -17,7 +17,13 @@ interface Props extends ImageProps {
   alt: string;
 }
 
-const Avatar = ({ className, size = 'md', src, alt, ...props }: Props) => (
+export const Avatar = ({
+  className,
+  size = 'md',
+  src,
+  alt,
+  ...props
+}: Props) => (
   <Image
     {...props}
     src={src}

@@ -3,10 +3,7 @@ import '@/styles/globals.css';
 import { Inter } from '@next/font/google';
 import type { AppProps } from 'next/app';
 
-import Button from '@/components/button';
-import { Input } from '@/components/Input';
-import { Footer } from '@/components/Navigation/footer';
-import { Header } from '@/components/Navigation/header';
+import { Button, Footer, Header, Input } from '@/components';
 
 const inter = Inter({
   subsets: ['latin'],

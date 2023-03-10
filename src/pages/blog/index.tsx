@@ -1,13 +1,12 @@
-import { BlogCard } from '@/components/BlogCard/BlogCard';
-import { Hero } from '@/components/hero';
+import { BlogCard, Container, Hero } from '@/components';
 import { GetAllPostsMeta } from '@/utils/blog';
 
 export default function BlogPage({ posts }: { posts: any[] }) {
   return (
-    <div>
+    <Container>
       <Hero>
         <Hero.Label>Our blog</Hero.Label>
-        <Hero.Title>Stories and interviews</Hero.Title>
+        <Hero.Title size="md">Stories and interviews</Hero.Title>
         <Hero.Subtitle>
           Subscribe to learn about new product features, the latest in
           technology, solutions, and updates.
@@ -31,7 +30,7 @@ export default function BlogPage({ posts }: { posts: any[] }) {
           )
         )}
       </section>
-    </div>
+    </Container>
   );
 }
 

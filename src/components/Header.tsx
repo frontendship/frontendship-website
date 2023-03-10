@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Menu, X } from 'react-feather';
 
 import { DiscordIcon } from '@/assets/icons';
-import Button from '@/components/Button';
+import { Button } from '@/components';
 import { HeaderLinks } from '@/data/navigation';
 
 export const Header = () => {
@@ -19,7 +19,7 @@ export const Header = () => {
             {HeaderLinks?.map(({ id, name, href }) => (
               <li
                 key={id}
-                className="text-base font-semibold text-gray-500 first:mr-2"
+                className="text-base font-semibold text-gray-500 first:mr-2 first:text-transparent first:bg-clip-text first:bg-gradient-to-r first:from-blue-900 first:to-blue-500 first:text-2xl first:font-bold"
               >
                 <Link href={href}> {name}</Link>
               </li>

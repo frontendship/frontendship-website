@@ -1,7 +1,7 @@
 import React from 'react';
 
 export function AuthorCard({ children }: { children: React.ReactNode }) {
-  return <figure className="flex flex-row gap-3  w-full">{children}</figure>;
+  return <figure className="flex w-full flex-row  gap-3">{children}</figure>;
 }
 
 AuthorCard.Avatar = function AuthorAvatar({
@@ -12,7 +12,7 @@ AuthorCard.Avatar = function AuthorAvatar({
   return (
     <img
       src={source?.src}
-      className="h-12 w-12 rounded-full object-center object-cover"
+      className="h-12 w-12 rounded-full object-cover object-center"
       alt={source?.alt}
     />
   );
@@ -41,5 +41,5 @@ AuthorCard.Position = function AuthorPosition({
 }: {
   children: string;
 }) {
-  return <span className="text-gray-500 text-base leading-6">{children}</span>;
+  return <span className="text-base leading-6 text-gray-500">{children}</span>;
 };

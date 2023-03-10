@@ -52,14 +52,15 @@ interface Props
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     ButtonBaseProps {}
 
-/**
- * @example <Button variant="filled" size="lg" fullWidth>Click!</Button>
- *  */
-const Button = ({ className, variant, fullWidth, size, ...props }: Props) => (
+export const Button = ({
+  className,
+  variant,
+  fullWidth,
+  size,
+  ...props
+}: Props) => (
   <button
     {...props}
     className={buttonStyles({ className, variant, size, fullWidth })}
   />
 );
-
-export default Button;

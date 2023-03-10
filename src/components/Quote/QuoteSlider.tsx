@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight } from 'react-feather';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import Avatar from '@/components/Avatar';
+import Avatar from '@/components/avatar';
 import Quotes from '@/data/quotes';
 import type { Quote } from '@/types';
 

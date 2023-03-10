@@ -1,4 +1,4 @@
-import { VariantProps, cva } from 'class-variance-authority';
+import { cva, VariantProps } from 'class-variance-authority';
 import { ButtonHTMLAttributes } from 'react';
 
 const iconButtonStyles = cva(['flex w-fit h-fit'], {

@@ -152,7 +152,7 @@ const HeaderInner: React.FC<HeaderInnerProps> = ({
   );
 };
 
-export default function HeaderSection() {
+export const Header = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(true);
   const [currentDropdown, setCurrentDropdown] = useState<DropdownItem>({
     key: '',
@@ -191,8 +191,8 @@ export default function HeaderSection() {
   };
 
   return (
-    <section className="relative">
-      <div className="  container mx-auto border-b  ">
+    <section className="relative font-sans">
+      <div className="container mx-auto border-b">
         <header className="flex h-screen flex-col items-center gap-6 overflow-hidden overflow-y-auto bg-white p-0  md:h-auto md:flex-row md:overflow-auto md:p-4">
           <HeaderInner
             isOpen={isMobileOpen}
@@ -211,4 +211,4 @@ export default function HeaderSection() {
       )}
     </section>
   );
-}
+};

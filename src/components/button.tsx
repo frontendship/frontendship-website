@@ -1,4 +1,5 @@
 import { cva, VariantProps } from 'class-variance-authority';
+import React from 'react';
 
 const buttonStyles = cva(
   ['font-semibold', 'rounded-lg', 'border', 'shadow-sm', 'shadow-violet-100/5'],
@@ -7,13 +8,13 @@ const buttonStyles = cva(
       variant: {
         filled: [
           'text-white',
-          'bg-violet-600',
-          'border-violet-600',
-          'hover:bg-violet-700',
+          'bg-blue-600',
+          'border-blue-600',
+          'hover:bg-blue-700',
           'focus:ring-4',
-          'ring-violet-100',
-          'disabled:bg-violet-200',
-          'disabled:border-violet-200',
+          'ring-blue-100',
+          'disabled:bg-blue-200',
+          'disabled:border-blue-200',
           'disabled:cursor-not-allowed'
         ],
         outline: [

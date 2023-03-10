@@ -93,23 +93,18 @@ interface Props extends BadgeBaseProps {
   className?: string;
 }
 
-const Badge = ({ children, className, size, variant }: Props) => {
+export function Badge({ children, className, size, variant }: Props) {
   return (
     <div className={badgeStyles({ className, size, variant })}>
       {typeof children == 'string' ? <span>{children}</span> : children}
     </div>
   );
-};
+}
 
-const BadgeTitle = ({ children }: { children: string }) => {
+Badge.Title = function BadgeTitle({ children }: { children: string }) {
   return <span className="badge-title shrink-0 rounded-2xl">{children}</span>;
 };
 
-const BadgeContent = ({ children }: { children: string }) => {
+Badge.Content = function BadgeContent({ children }: { children: string }) {
   return <span className="shrink-0">{children}</span>;
 };
-
-Badge.Title = BadgeTitle;
-Badge.Content = BadgeContent;
-
-export default Badge;

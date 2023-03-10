@@ -5,13 +5,13 @@ import { FooterRoutes } from '@/data/navigation';
 
 export const Footer = () => {
   return (
-    <footer className="px-8 max-w-7xl mx-auto">
-      <div className="grid md:grid-cols-12 border-b border-b-gray-200 py-16">
+    <footer className="mx-auto max-w-7xl px-8">
+      <div className="grid border-b border-b-gray-200 py-16 md:grid-cols-12">
         <div className="md:col-span-6">
           <span>LOGO</span>
         </div>
-        <div className="md:col-span-6 mt-12 md:mt-0">
-          <nav className="grid md:grid-cols-3 grid-cols-2 gap-x-8">
+        <div className="mt-12 md:col-span-6 md:mt-0">
+          <nav className="grid grid-cols-2 gap-x-8 md:grid-cols-3">
             {FooterRoutes?.map(({ id, routes }) => (
               <ul className="space-y-3 last:mt-8 last:md:mt-0" key={id}>
                 {routes?.map(({ id, name, href }) => (
@@ -27,8 +27,8 @@ export const Footer = () => {
           </nav>
         </div>
       </div>
-      <section className="py-8 flex justify-between  flex-col-reverse md:flex-row">
-        <span className="text-gray-400 text-base mt-6  md:mt-0">
+      <section className="flex flex-col-reverse justify-between  py-8 md:flex-row">
+        <span className="mt-6 text-base text-gray-400  md:mt-0">
           © 2077 Untitled UI. All rights reserved.
         </span>
         <nav>

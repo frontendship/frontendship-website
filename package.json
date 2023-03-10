@@ -13,7 +13,9 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.13",
     "@next/font": "^13.0.5",
+    "@tailwindcss/typography": "^0.5.9",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
@@ -27,6 +29,7 @@
     "gray-matter": "^4.0.3",
     "next": "13.0.5",
     "next-mdx-remote": "^4.2.0",
+    "next-svgr": "^0.0.2",
     "path": "^0.12.7",
     "prettier": "^2.8.0",
     "react": "18.2.0",
@@ -42,6 +45,7 @@
     "typescript": "4.9.3"
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.5.1",
     "autoprefixer": "^10.4.13",
     "eslint-plugin-simple-import-sort": "^8.0.0",
     "eslint-plugin-tailwindcss": "^3.8.0",

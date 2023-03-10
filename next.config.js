@@ -1,26 +1,19 @@
 /** @type {import('next').NextConfig} */
+
+const withSvgr = require('next-svgr');
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  webpack(config) {
+    return config;
+  },
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'prototyprio.gumlet.io',
-        port: '',
-        pathname: '/*/**'
-      },
-      {
-        protocol: 'https',
-        hostname: 'i.hizliresim.com',
-        port: '',
-        pathname: '/*'
-      }
-    ]
+    domains: ['i.ytimg.com']
   },
   env: {
     DISCORD_SERVER_URL: 'https://discord.gg/frontendship'
   }
 };
 
-module.exports = nextConfig;
+module.exports = withSvgr(nextConfig);

@@ -3,19 +3,19 @@ import Link from 'next/link';
 import { ReactNode } from 'react';
 import { GitHub, Linkedin, Twitter } from 'react-feather';
 
-const TeamCard = ({ children }: { children: ReactNode }) => {
+export const TeamCard = ({ children }: { children: ReactNode }) => {
   return <div>{children}</div>;
 };
 
 const TeamCardImage = ({ src, alt }: { src: string; alt: string }) => {
   return (
-    <div className="relative h-[280px] w-full xl:h-[296px]">
+    <div className="relative w-full">
       <Image
-        loader={() => src}
+        height={705}
+        width={1253}
+        className="h-full w-full object-cover object-center "
         src={src}
         alt={alt}
-        fill
-        className="object-cover"
       />
     </div>
   );
@@ -30,7 +30,7 @@ const TeamCardTitle = ({ children }: { children: ReactNode }) => {
 };
 const TeamCardSubTitle = ({ children }: { children: ReactNode }) => {
   return (
-    <p className="mt-1 text-base font-normal leading-7 text-violet-700 md:text-lg">
+    <p className="mt-1 text-base font-normal leading-7 text-blue-700 md:text-lg">
       {children}
     </p>
   );
@@ -72,5 +72,3 @@ TeamCard.Title = TeamCardTitle;
 TeamCard.SubTitle = TeamCardSubTitle;
 TeamCard.Description = TeamCardDescription;
 TeamCard.Social = TeamCardSocial;
-
-export default TeamCard;

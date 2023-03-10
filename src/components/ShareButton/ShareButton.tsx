@@ -7,7 +7,7 @@ const openShareDialog = (targetUrl: URL | string) => {
   window.open(targetUrl, '_blank', 'location=yes,width=600,height=600');
 };
 
-const ShareButton = ({
+export const ShareButton = ({
   children,
   onClick
 }: {

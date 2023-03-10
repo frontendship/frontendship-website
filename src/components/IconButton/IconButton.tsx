@@ -9,7 +9,7 @@ const iconButtonStyles = cva(['flex w-fit h-fit'], {
         'text-gray-400 fill-current hover:text-gray-500 active:text-gray-600'
       ],
       bordered: [
-        'border border-gray-300 hover:border-gray-400 active:border-gray-600',
+        'border border-gray-200 hover:border-gray-400 active:border-gray-600',
         'rounded-lg',
         'shadow-sm shadow-blue-900/5'
       ]

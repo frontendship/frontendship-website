@@ -12,6 +12,7 @@ import {
   NpmIcon,
   ReactIcon,
   ReduxIcon,
+  RemixRunIcon,
   TypeScriptIcon,
   VisualStudioIcon,
   VueIcon,
@@ -51,46 +52,51 @@ const Technologies: Technology[] = [
   },
   {
     id: 7,
+    icon: RemixRunIcon,
+    name: 'Remix Run'
+  },
+  {
+    id: 8,
     icon: HTMLIcon,
     name: 'HTML'
   },
   {
-    id: 8,
+    id: 9,
     icon: FigmaIcon,
     name: 'Figma'
   },
   {
-    id: 9,
+    id: 10,
     icon: AngularIcon,
     name: 'Angular'
   },
   {
-    id: 10,
+    id: 11,
     icon: TypeScriptIcon,
     name: 'TypeScript'
   },
   {
-    id: 11,
+    id: 12,
     icon: NodeIcon,
     name: 'Node'
   },
   {
-    id: 12,
+    id: 13,
     icon: VisualStudioIcon,
     name: 'Visual Studio'
   },
   {
-    id: 13,
+    id: 14,
     icon: ReduxIcon,
     name: 'Redux'
   },
   {
-    id: 14,
+    id: 15,
     icon: NpmIcon,
     name: 'Npm'
   },
   {
-    id: 15,
+    id: 16,
     icon: WebpackIcon,
     name: 'Webpack'
   }

@@ -1,1 +1,2 @@
-export { default as TeamCard } from './TeamCard';
+export { TeamCard } from './TeamCard';
+export { AuthorCard } from './authorCard';

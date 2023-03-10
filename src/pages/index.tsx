@@ -110,7 +110,7 @@ export default function Home() {
       <section className="bg-gray-50 py-16 md:py-24">
         <Quotes />
       </section>
-      <section>
+      <section className="pb-16">
         <FaqSection />
       </section>
     </div>

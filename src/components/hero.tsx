@@ -29,7 +29,7 @@ Hero.Subtitle = function HeroSubtitle({
   children: React.ReactNode;
 }) {
   return (
-    <h2 className="mb-12 max-w-3xl text-xl font-normal text-gray-500">
+    <h2 className="mb-12 lg:max-w-3xl text-lg md:text-xl font-normal text-gray-500 leading-7">
       {children}
     </h2>
   );

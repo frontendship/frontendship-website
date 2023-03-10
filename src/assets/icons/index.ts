@@ -13,7 +13,11 @@ export { default as VisualStudioIcon } from './visual.svg';
 export { default as VueIcon } from './vue.svg';
 export { default as WebpackIcon } from './webpack.svg';
 export { default as TypeScriptIcon } from './ts.svg';
+export { default as RemixRunIcon } from './remix.svg';
 
 export { default as TwitterIcon } from './twitter.svg';
 export { default as FacebookIcon } from './facebook.svg';
 export { default as LinkedinIcon } from './linkedin.svg';
+export { default as LinkIcon } from './link.svg';
+export { default as GithubLinkIcon } from './github-link.svg';
+export { default as DiscordIcon } from './discord.svg';

@@ -9,7 +9,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['i.ytimg.com']
+    domains: ['i.ytimg.com', 'www.gravatar.com']
   },
   env: {
     DISCORD_SERVER_URL: 'https://discord.gg/frontendship'

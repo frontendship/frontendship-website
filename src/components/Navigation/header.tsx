@@ -5,6 +5,7 @@ import { Menu, X } from 'react-feather';
 
 import Button from '@/components/button';
 import { HeaderLinks } from '@/data/navigation';
+import { DiscordIcon } from '@/assets/icons';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,7 +25,10 @@ export const Header = () => {
               </li>
             ))}
             <li className="ml-auto">
-              <Button>Join to Discord</Button>
+              <Button className="flex flex-row gap-3 items-center">
+                <DiscordIcon />
+                <span>Join to Discord</span>
+              </Button>
             </li>
           </ul>
         </nav>

@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Menu, X } from 'react-feather';
 
-import Button from '@/components/button';
-import { HeaderLinks } from '@/data/navigation';
 import { DiscordIcon } from '@/assets/icons';
+import Button from '@/components/Button';
+import { HeaderLinks } from '@/data/navigation';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

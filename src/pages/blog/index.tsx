@@ -13,7 +13,7 @@ export default function BlogPage({ posts }: { posts: any[] }) {
         </Hero.Subtitle>
       </Hero>
 
-      <section className="grid px-4 md:mx-auto md:max-w-7xl md:grid-cols-3 md:px-8 xl:px-0">
+      <section className="grid px-4 md:mx-auto md:max-w-7xl md:grid-cols-3 md:px-8 xl:px-0 gap-3">
         {posts.map(
           ({ meta: { title, description, cover, author, date, slug } }) => (
             <BlogCard key={title}>

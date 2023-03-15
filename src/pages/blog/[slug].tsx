@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote';
+import Link from 'next/link';
 
 import {
   GithubLinkIcon,
@@ -9,11 +9,51 @@ import {
 } from '@/assets/icons';
 import { AuthorCard, Badge, Container, Hero, IconButton } from '@/components';
 import { GetAllSlugs, GetNoteBySlug } from '@/utils/blog';
+import React from 'react';
+
+enum BlogIcons {
+  Github = 'github',
+  Linkedin = 'linkedin',
+  Site = 'site',
+  Twitter = 'twitter'
+}
+
+const Icons : Record<BlogIcons, React.FC> = {
+  [BlogIcons.Github]: GithubLinkIcon,
+  [BlogIcons.Linkedin]: LinkedinIcon,
+  [BlogIcons.Site]: LinkIcon,
+  [BlogIcons.Twitter]: TwitterIcon
+}
+
+type BlogDetailParams = {
+  source: any;
+  meta: {
+    title: string;
+    category: string;
+    readTime: string;
+    date: string;
+    avatar: string;
+    author: string;
+    authorRole: string;
+    content: { slug: string; name: string }[];
+    socials: {
+      icon: BlogIcons;
+      link: string;
+    }[]
+  }
+}
+
+const BlogIcon : React.FC<{icon: BlogIcons}> = ({ icon }) => {
+  const Icon = Icons[icon];
+
+  return (<Icon />)
+}
 
 export default function BlogDetail({
   source,
-  meta: { title, category, readTime, date, avatar, author, content }
-}: any) {
+  meta: { title, category, readTime, date, avatar, author, authorRole, content, socials }
+}: BlogDetailParams) {
+
   return (
     <div>
       <Container>
@@ -60,25 +100,18 @@ export default function BlogDetail({
                   }}
                 />
                 <AuthorCard.Info>
-                  <AuthorCard.Name>Oğuz Ergül</AuthorCard.Name>
-                  <AuthorCard.Position>Software Developer</AuthorCard.Position>
+                  <AuthorCard.Name>{author}</AuthorCard.Name>
+                  <AuthorCard.Position>{authorRole}</AuthorCard.Position>
                 </AuthorCard.Info>
               </AuthorCard>
             </div>
 
             <div className="flex flex-row gap-4">
+              {socials && socials.map((social, index) => <Link key={index} href={social.link} target="_blank">
               <IconButton variant="bordered" padding="lg" aria-label="link">
-                <LinkIcon />
+                <BlogIcon icon={social.icon} />
               </IconButton>
-              <IconButton variant="bordered" padding="lg">
-                <GithubLinkIcon />
-              </IconButton>
-              <IconButton variant="bordered" padding="lg">
-                <TwitterIcon />
-              </IconButton>
-              <IconButton variant="bordered" padding="lg">
-                <LinkedinIcon />
-              </IconButton>
+              </Link>)}
             </div>
           </div>
         </div>

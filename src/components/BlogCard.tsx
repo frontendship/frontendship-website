@@ -41,7 +41,7 @@ BlogCard.Image = function Images({
         alt={source.alt}
         height={705}
         width={1253}
-        className="h-full w-full object-cover object-center rounded-md"
+        className="h-full w-full object-cover object-center"
       />
     </div>
   );

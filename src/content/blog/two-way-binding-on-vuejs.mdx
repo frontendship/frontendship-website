@@ -1,0 +1,181 @@
+---
+title: VueJS'de İki Yönlü Bağlama
+description: VueJS'de iki yönlü bağlama nasıl yapılır? VueJS'de iki yönlü bağlama örneği.
+author: Sami Salih İbrahimbaş
+authorRole: Software Developer
+socials:
+  - icon: site
+    link: https://ssibrahimbas.com
+  - icon: github
+    link: https://github.com/ssibrahimbas
+  - icon: twitter
+    link: https://twitter.com/ss_ibrahimbas
+  - icon: linkedin
+    link: https://www.linkedin.com/in/ssibrahimbas
+cover: /images/articles/two-way-binding-on-vuejs.png
+avatar: /avatars/sami-salih-ibrahimbas.jpg
+date: '22 Oct 2022'
+category: Engineering
+tags:
+  - Vue.js
+  - JavaScript
+content:
+  - name: Giriş
+    slug: giris
+  - name: İki Yönlü Bağlama VueJS'de Nasıl Çalışır?
+    slug: iki-yonlu-baglama-vuejsde-nasil-calisir
+  - name: Sonuç
+    slug: sonuc
+---
+
+# VueJS'de İki Yönlü Bağlama
+
+Adım adım ve mantığıyla
+
+Vue'nun odaklandığı şey geliştirici dostluğudur. Öyle ki Vue'da çift yönlü bağlama rakiplerine göre daha kolay! Bu yazıda Vue'da iki yönlü bağlamayı nasıl yapabileceğimizi ve üst düzey bileşenleri nasıl geliştirebileceğimizi göreceğiz.
+
+## Giriş
+
+Bileşen tabanlı ön uç çerçeveler ve kitaplıklar için en temel kavramlardan biri, durum yönetimi ve bileşenler arası veri akışıdır. Bu veri akışları aşağı yönlü ve/veya yukarı yönlü olabilir.
+
+Aşağı yönlü veri akışı, üst bileşenden alt bileşene veri akışına karşılık gelir. Aslında tamamen bir fonksiyona parametre verdiğimizi düşünebilirsiniz. Nasıl bir fonksiyon çalışmak için bazı parametrelere ihtiyaç duyuyorsa, bileşenler de verileri göstermek için bazı parametrelere ihtiyaç duyabilir.
+
+Yukarı yönlü veri akışı, alt bileşenden üst bileşene veri akışına karşılık gelir. Bunu tıpkı bir fonksiyona parametre olarak callback vermeye benzetebilirsiniz. Tıpkı bir html elementine bir `onclick` özelliği verdiğiniz gibi, bir bileşene bir dinleyici fonksiyonu verirsiniz.
+
+![Two way binding on Vue](/images/articles/two-way-binding.png)
+
+Yukarıdaki diyagramda görüldüğü gibi, değer ve tür gibi özelliklerimizi (props) aşağı akışa iletebiliriz. Ayrıca yukarıdaki update:value gibi özel bir olay dinleyici (fonksiyon) da gönderebiliriz. Peki bu aslında nasıl çalışıyor?
+
+## İki Yönlü Bağlama VueJS'de Nasıl Çalışır?
+
+VueJS'de iki yönlü bağlama `v-model` yönergesi (directive) ile çalışır. `v-model` yönergesi, Vue tarafından yerleşik olarak gelir ve iki yönlü bağlama sağlamak için geliştirilmiştir.
+
+Vue'da yönergeler `v-{direktifIsmi}` olarak yazılır ve genellikle doğrudan DOM işlemleri yapan direktiflerdir. Direktifler hakkında daha fazla bilgi için [burayı ziyaret edebilirsiniz](https://vuejs.org/guide/reusability/custom-directives.html#introduction).
+
+Vue, yerleşik olarak model direktifini sağladığından hiçbir ek paket kullanmadan aşağıdaki gibi bir iki yönlü bağlama yapabiliriz:
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue';
+
+const username = ref<string>('');
+</script>
+
+<template>
+  <input v-model="username" />
+  username is : {{ username }}
+</template>
+```
+
+Bu kodu çalıştırdığınızda girdiye (input) bir şeyler yazdıkça aşağıdaki alanın da güncellendiğini görebilirsiniz.
+
+Ancak çoğu zaman bir input'a direktif vermekle yetinmeyiz. Vue ile geliştirme yaptıysanız veya bir projeye dahil olduysanız, bir UI kitinde veya başka herhangi bir yerde `v-model:value` şeklinde bir kullanım görmüş olabilirsiniz.
+
+Aslında Vue'nun kaynak kodunu incelediğimizde `v-model` sözdiziminin arkaplanda otamatik olarak `v-model:modelValue` şeklinde ayrıştırıldığını görüyoruz. Yani modelimiz için hiçbir isim vermezsek Vue, otomatik olarak `modelValue` ismini verir.
+
+Örneğin, kendi bileşenimizde `modelValue` ismini kullanmak istiyorsak, aşağıdaki gibi bir kod yazmamız gerekir:
+
+```vue
+<script setup lang="ts">
+import { computed } from 'vue';
+
+type ComponentProps = {
+  modelValue: string;
+};
+const props = defineProps<ComponentProps>();
+const emit = defineEmits(['update:modelValue']);
+
+const username = computed<string>({
+  get: (): string => props.modelValue,
+  set: (v: string): void => emit('update:modelValue', v)
+});
+</script>
+<template>
+  <input v-model="username" />
+  username is : {{ username }}
+</template>
+```
+
+Burada props olarak `modelValue` adında bir değer alınır ve emitter ile `update:modelValue` adında bir olay geçirilir. `defineProps` ve `defineEmits` işlevleri, bileşen oluşturulmadan önce çalışır ve Vue, bileşen oluşturulmadan önce bileşenin props ve emitters'ını tanımlar.
+
+Ve artık kendi bileşenimizi şu şekilde kullanabiliriz:
+
+```vue
+<script setup lang="ts">
+import MyComponent from './MyComponent.vue';
+import { ref } from 'vue';
+
+const username = ref<string>('');
+</script>
+
+<template>
+  <my-component v-model="username"></my-component>
+</template>
+```
+
+Aslında, `v-model` olmadan sanki bir html olayını dinliyormuş gibi de kullanabilirdik. Aşağıdaki gibi:
+
+```vue
+<script setup lang="ts">
+import MyComponent from './MyComponent.vue';
+import { ref } from 'vue';
+
+const username = ref<string>('');
+</script>
+
+<template>
+  <my-component
+    :model-value="username"
+    @update:model-value="username = $event"
+  ></my-component>
+</template>
+```
+
+Burada görüldüğü gibi, aslında bir `v-model`, sözdizimi şekeridir. Gönderilen bir prop değerinin anahtarına sahip herhangi bir `update:{anahtar}` dinleyicisi varsa, Vue bunu otomatik olarak `v-model` olarak birleştirir.
+
+Peki, bu prop değerlerini `modelValue` olarak değil de `visible` olarak iletmek istemez misiniz? Tek yapmanız gereken `modelValue` yazdığımız yerleri `visible` olarak değiştirmek. Aşağıdaki gibi:
+
+```vue
+<script setup lang="ts">
+import { computed } from 'vue';
+
+type ComponentProps = {
+  visible: boolean;
+};
+
+const props = defineProps<ComponentProps>();
+const emit = defineEmits(['update:visible']);
+
+const visible = computed<boolean>({
+  get: (): boolean => props.visible,
+  set: (v: boolean): void => emit('update:visible', v)
+});
+</script>
+
+<template>
+  <div v-if="visible">you can see</div>
+  <div v-else>you can't see</div>
+</template>
+```
+
+vue aşağıdaki gibi kullanıma sahip olmalıyız:
+
+```vue
+<script setup lang="ts">
+import MyComponent from './MyComponent.vue';
+import { ref } from 'vue';
+
+const divVisible = ref<boolean>(false);
+</script>
+
+<template>
+  <my-component v-model:visible="divVisible"></my-component>
+  <button @click="divVisible = !divVisible">toggle</button>
+</template>
+```
+
+## Sonuç
+
+Bu yazıda iki yönlü bağlamanın Vue'da nasıl çalıştığından bahsettik, kendi model direktifimizi yazmayı öğrendik ve birkaç örnek verdik.
+
+Bunun gibi birçok Frontend konusundaki yazılardan haberdar olmak için Frontendship'i takip etmeyi unutmayın!
